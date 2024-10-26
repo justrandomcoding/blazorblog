@@ -1,0 +1,84 @@
+﻿@page "/weather"
+@inject ISender sender;
+@using Application.BlogPosts
+@using Application.BlogPosts.List
+@using Application.Categories
+@using Application.Categories.List
+@using Application.Dtos
+@using MediatR
+@attribute [StreamRendering]
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+@if (blogPosts == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
+            <th>Tags</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var forecast in blogPosts)
+        {
+            <tr>
+                <td>@forecast.Title</td>
+                <td>@forecast.Introduction</td>
+                <td>@forecast.PublishDate</td>
+                <td>@forecast.Category.Slug</td>
+                
+                <td>@foreach (var tag in forecast.Tags)
+                    {
+                        @tag.Slug
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private CategoryDto[]? forecasts;
+
+    private BlogPostDto[]? blogPosts;
+    protected override async Task OnInitializedAsync()
+    {
+        var categories = await sender.Send(new ListCategoriesRequest());
+        
+        forecasts = categories.ToArray();
+        var posts = await sender.Send(
+            new ListBlogPostsByTagRequest
+            {
+                TagSlug = "Tag-2",
+                PageIndex = 0,
+                 PageSize = 5
+            } );
+
+        blogPosts = posts.Data.ToArray();
+
+    }
+
+    private class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+        public int TemperatureC { get; set; }
+        public string? Summary { get; set; }
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+
+}
