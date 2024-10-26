@@ -26,4 +26,8 @@
       </PackageReference>
     </ItemGroup>
 
+    <Target Name="Tailwind" BeforeTargets="Compile">
+        <Exec Command="npx tailwindcss -i ./Styles/tailwind.css -o ./wwwroot/styles.css" />
+    </Target>
+
 </Project>

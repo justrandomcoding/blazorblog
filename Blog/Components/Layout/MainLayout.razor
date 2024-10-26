@@ -1,6 +1,45 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
+
+<div class="flex flex-col min-h-screen" >
+    <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+        <div class="logo">
+            <h2 class="text-xl font-bold">MySite</h2>
+        </div>
+        <nav class="flex space-x-4">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+            <NavLink class="nav-link" href="counter">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+            </NavLink>
+            <NavLink class="nav-link" href="weather">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+            </NavLink>
+            <a class="text-white hover:underline" href="#home">Home</a>
+            <a class="text-white hover:underline" href="#about">About</a>
+            <a class="text-white hover:underline" href="#services">Services</a>
+            <a class="text-white hover:underline" href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="flex-1 p-8">
+        <h1>Welcome to Our Website</h1>
+        @Body
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4">
+        &copy; 2024 MySite. All rights reserved.
+    </footer>
+
+
+
+</div>
+
+<!--div class="page">
+    
+    
+    
     <div class="sidebar">
         <NavMenu/>
     </div>
@@ -14,7 +53,7 @@
             @Body
         </article>
     </main>
-</div>
+</div-->
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
