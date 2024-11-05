@@ -1,40 +1,60 @@
-.page {
-    position: relative;
+/* General container */
+.container {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
-main {
-    flex: 1;
-}
-
-.sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
-}
-
-.top-row {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
-    height: 3.5rem;
+/* Header */
+.header {
+    background-color: #1f2937; /* Equivalent to Tailwind's bg-gray-800 */
+    color: #ffffff; /* Equivalent to Tailwind's text-white */
+    padding: 1rem; /* Equivalent to Tailwind's p-4 */
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
-    }
+/* Logo */
+.site-title {
+    font-size: 1.25rem; /* Equivalent to Tailwind's text-xl */
+    font-weight: 700; /* Equivalent to Tailwind's font-bold */
+}
 
-    .top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
-        text-decoration: underline;
-    }
+/* Navigation */
+.nav {
+    display: flex;
+    gap: 1rem; /* Equivalent to Tailwind's space-x-4 */
+}
 
-    .top-row ::deep a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-item {
+    color: #ffffff; /* Equivalent to Tailwind's text-white */
+    text-decoration: none;
+    transition: text-decoration 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+    text-decoration: underline; /* Equivalent to Tailwind's hover:underline */
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1; /* Equivalent to Tailwind's flex-1 */
+    padding: 2rem; /* Equivalent to Tailwind's p-8 */
+}
+
+/* Footer */
+.footer {
+    background-color: #1f2937; /* Equivalent to Tailwind's bg-gray-800 */
+    color: #ffffff; /* Equivalent to Tailwind's text-white */
+    text-align: center;
+    padding: 1rem; /* Equivalent to Tailwind's p-4 */
+}
 
 @media (max-width: 640.98px) {
     .top-row {

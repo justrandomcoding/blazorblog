@@ -19,15 +19,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Markdig" Version="0.38.0" />
       <PackageReference Include="MediatR" Version="12.4.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
     </ItemGroup>
-
-    <Target Name="Tailwind" BeforeTargets="Compile">
-        <Exec Command="npx tailwindcss -i ./Styles/tailwind.css -o ./wwwroot/styles.css" />
-    </Target>
 
 </Project>
